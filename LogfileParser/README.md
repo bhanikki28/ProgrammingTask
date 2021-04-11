@@ -10,8 +10,9 @@ Input file is located at : src/main/resources/programming-task-example-data.log
 
 #Tools
 
-Java 1.8
-Maven
-Jacoco Plugin ( JUnit Code Coverage : /target/site/jacaco/index.html )
-JUnit
-Eclipse/IntelliJ 
+	Java 1.8
+	Maven
+	Jacoco Plugin ( JUnit Code Coverage : /target/site/jacaco/index.html )
+	JUnit
+	Eclipse/IntelliJ 
+
