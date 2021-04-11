@@ -27,15 +27,18 @@ public class Launcher {
 		try {
 			configFile = objLauncher.readFile(LOG_FILE_NAME);
 		} catch (NullPointerException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			throw new FileNotFoundException("File name not valid");
+			throw new FileNotFoundException("File name not valid/not present");
 		}
 
+		// to get Unique IP address count
 		objParser.getUniqueIPCount(configFile);
+		
+		// To get Top 3 active IP address
 		List<String> activeIPs = objParser.getTopActiveIPs(configFile);
 		logger.info("Top 3 Active IPs(Status Code:200)" + activeIPs);
 
+		// To get top 3 visited URLs
 		List<String> topURLs = objParser.getTopURLs(configFile);
 		logger.info("Top 3 Visited URLs:" + topURLs);
 
