@@ -58,11 +58,11 @@ public class LogParser {
 			linesStream.forEach(line -> {
 				final Matcher matcher = pattern.matcher(line);
 				while (matcher.find()) {
-					String IP = matcher.group(1);
-					String Response = matcher.group(8);
-					int response = Integer.parseInt(Response);
+					String ip_address = matcher.group(1);
+					String status_code = matcher.group(8);
+					int response = Integer.parseInt(status_code);
 					if (response == 200) {
-						items.add(IP);
+						items.add(ip_address);
 					}
 				}
 			});
@@ -77,7 +77,7 @@ public class LogParser {
 
 		List<String> topActiveIP = new ArrayList<>();
 
-		// Sort a map and add to finalMap
+		// Sort a map and add to list
 		result.entrySet().stream().sorted(Map.Entry.<String, Long>comparingByValue().reversed()).limit(3)
 				.forEachOrdered(e -> topActiveIP.add(e.getKey()));
 
@@ -111,7 +111,7 @@ public class LogParser {
 
 		List<String> top3Urls = new ArrayList<>();
 
-		// Sort a map and add to finalMap
+		// Sort a map and add to list
 		result.entrySet().stream().sorted(Map.Entry.<String, Long>comparingByValue().reversed()).limit(3)
 				.forEachOrdered(e -> top3Urls.add(e.getKey()));
 
