@@ -24,6 +24,14 @@ public class LogParser {
 			+ " (\\S+)\\s*(\\S+)?\\s*\" (\\d{3}) (\\S+)";
 	final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
 
+	/**
+	 * Method getUniqueIPCount will return the count of unique IP address in a specified
+	 * log file. 
+	 * It uses RegEx to match the pattern and retrieve the IP address, collect it in a list, stream it and 
+	 * using distinct filter and through count operator returns the count
+	 * @param configFile
+	 * @return
+	 */
 	public long getUniqueIPCount(File configFile){
 		logger.info("Inside getUniqueIPCount");
 		long uniqueIpAddressCount = 0;
@@ -48,6 +56,14 @@ public class LogParser {
 		return uniqueIpAddressCount;
 
 	}
+	
+	/**
+	 * Method getTopActiveIPs - will parse the log file and check the status_code for 200
+	 * and add the corresponding IP address to the list
+	 * Using Streams and by GroupBy collectors, it will return the top3 active IPs
+	 * @param configFile
+	 * @return
+	 */
 
 	public List<String> getTopActiveIPs(File configFile) {
 		logger.info("Inside getTop3 Active");
@@ -88,6 +104,13 @@ public class LogParser {
 
 	}
 	
+	
+	/**
+	 * Method getTopURLs will parse the log file and return the
+	 * top 3 visited URLs in a log file
+	 * @param configFile
+	 * @return
+	 */
 	public List<String> getTopURLs(File configFile) {
 		logger.info("Inside getTop3URLs");
 
