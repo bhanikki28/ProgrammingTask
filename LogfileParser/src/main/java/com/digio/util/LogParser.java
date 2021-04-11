@@ -78,10 +78,12 @@ public class LogParser {
 		List<String> topActiveIP = new ArrayList<>();
 
 		// Sort a map and add to list
-		result.entrySet().stream().sorted(Map.Entry.<String, Long>comparingByValue().reversed()).limit(3)
-				.forEachOrdered(e -> topActiveIP.add(e.getKey()));
+		result.entrySet().stream()
+		                 .sorted(Map.Entry.<String, Long>comparingByValue()
+		                 .reversed())
+		                 .limit(3)
+				         .forEachOrdered(e -> topActiveIP.add(e.getKey()));
 
-		logger.info("Top 3 Active IPs(Status Code:200)" + topActiveIP);
 		return topActiveIP;
 
 	}
@@ -107,15 +109,16 @@ public class LogParser {
 			e.printStackTrace();
 		}
 		Map<String, Long> result = urls.stream()
-				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+				                       .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
 		List<String> top3Urls = new ArrayList<>();
 
 		// Sort a map and add to list
-		result.entrySet().stream().sorted(Map.Entry.<String, Long>comparingByValue().reversed()).limit(3)
-				.forEachOrdered(e -> top3Urls.add(e.getKey()));
+		result.entrySet().stream()
+		                 .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
+		                 .limit(3)
+				         .forEachOrdered(e -> top3Urls.add(e.getKey()));
 
-		logger.info("Top 3 Visited URLs:" + top3Urls);
 		return top3Urls;
 
 	}

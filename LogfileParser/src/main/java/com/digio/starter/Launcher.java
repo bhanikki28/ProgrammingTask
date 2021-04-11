@@ -2,6 +2,7 @@ package com.digio.starter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.logging.Logger;
 
 import com.digio.util.LogParser;
@@ -32,8 +33,12 @@ public class Launcher {
 		}
 
 		objParser.getUniqueIPCount(configFile);
-		objParser.getTopActiveIPs(configFile);
-		objParser.getTopURLs(configFile);
+		List<String> activeIPs = objParser.getTopActiveIPs(configFile);
+		logger.info("Top 3 Active IPs(Status Code:200)" + activeIPs);
+
+		List<String> topURLs = objParser.getTopURLs(configFile);
+		logger.info("Top 3 Visited URLs:" + topURLs);
+
 
 	}
 }
